@@ -36,3 +36,10 @@ select titulo, ano_publicacao
 from livros
 order by ano_publicacao ASC;
 
+USE biblioteca;
+CREATE TABLE leitores(
+    id_leitor INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    telefone VARCHAR(20)
+);
