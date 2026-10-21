@@ -53,3 +53,23 @@ CREATE TABLE emprestimos(
     data_emprestimo DATE NOT NULL,
     data_prevista_devolucao DATE NOT NULL
 );
+
+
+INSERT INTO leitores(nome,email,telefone) VALUES
+('Ana Lima', 'ana@example.com', '83999990000'),
+('Pedro Santos', 'pedro@example.com', '83988880000');
+SELECT * FROM leitores;
+
+INSERT INTO emprestimos
+    (id_livro, id_leitor, data_emprestimo, data_prevista_devolucao)
+VALUES
+    (1, 1, CURDATE(), DATE_ADD(CURDATE(), INTERVAL 14 DAY));
+
+SELECT
+    l.titulo AS livro,
+    le.nome AS leitor,
+    e.data_emprestimo,
+    e.data_prevista_devolucao
+FROM emprestimos AS e
+JOIN livros AS l ON e.id_livro = l.id_livro
+JOIN leitores AS le ON e.id_leitor = le.id_leitor;
