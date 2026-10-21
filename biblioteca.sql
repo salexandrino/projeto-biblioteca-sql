@@ -43,3 +43,13 @@ CREATE TABLE leitores(
     email VARCHAR(150) NOT NULL UNIQUE,
     telefone VARCHAR(20)
 );
+
+CREATE TABLE emprestimos(
+    id_emprestimo int AUTO_INCREMENT PRIMARY KEY,
+    id_livro INT NOT NULL,
+    id_leitor INT NOT NULL,
+    FOREIGN KEY(id_livro) REFERENCES livros(id_livro),
+    FOREIGN KEY(id_leitor) REFERENCES leitores(id_leitor),
+    data_emprestimo DATE NOT NULL,
+    data_prevista_devolucao DATE NOT NULL
+);
